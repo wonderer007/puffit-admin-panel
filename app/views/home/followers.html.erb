@@ -19,16 +19,14 @@
               <table class="table table-bordered">
                 <tbody><tr>
                   <th style="width: 10px">#</th>
-                  <th>Name</th>
                   <th>Phone #</th>
                   <th style="width: 40px">Actions</th>
                 </tr>
 
-                <% @followers["contacts"].each_with_index do |follower, index|%>
+                <% @followers.each_with_index do |follower, index|%>
                   <tr>
                     <td><%= index %></td>
-                    <td><%= follower["name"] %></td>
-                    <td><%= follower["phone"] %></td>
+                    <td><%= follower %></td>
                     <td>
                       <a href=""><i class="fa fa-envelope"></i></a>
                     </td>

@@ -29,6 +29,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'pry'
 gem 'redis'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

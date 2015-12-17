@@ -6,9 +6,8 @@ class HomeController < ApplicationController
   def index
   end
 
-  def puffit
-    result = Net::HTTP.get(URI.parse('http://212.100.239.153/koonj-api/api/roster.php?jid=hsy@212.100.239.153'))
-    @followers = JSON.parse(result)
+  def followers
+    @followers = current_user.followers
   end
 
 end
