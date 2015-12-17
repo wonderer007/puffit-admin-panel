@@ -2,7 +2,6 @@
   <%= render 'shared/header.html.erb' %>
   <%= render 'shared/main_navigation.html.erb' %>
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Puffit IM
@@ -16,33 +15,26 @@
               <h3 class="box-title">Followers List</h3>
             </div>
             <div class="box-body">
-              <table class="table table-bordered">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Phone #</th>
-                  <th style="width: 40px">Actions</th>
-                </tr>
-
-                <% @followers.each_with_index do |follower, index|%>
-                  <tr>
-                    <td><%= index %></td>
-                    <td><%= follower %></td>
-                    <td>
-                      <a href=""><i class="fa fa-envelope"></i></a>
-                    </td>
-                  </tr>
-                <% end %>
-
-              </tbody></table>
-            </div><!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Phone #</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <th>Phone #</th>
+        <th>Message</th>
+    </tfoot>
+    <tbody>
+      <% @followers.each do |follower|%>
+        <tr>
+          <td><%= follower%></td>
+          <td><%= follower%></td>
+        </tr>
+      <%end%>
+    </tbody>
+</table>
             </div>
           </div>
         </div>
@@ -51,3 +43,13 @@
   </div>
   <%= render 'shared/footer.html.erb' %>
 </div>
+
+<script>
+    debugger;
+
+  $(document).ready(function() {
+    debugger;
+    $('#example').DataTable({});
+    $('#example').DataTable({ "pageLength": 10});
+  });
+</script>
