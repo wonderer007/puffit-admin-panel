@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <%= render 'shared/header.html.erb' %>
+  <%= render 'shared/main_navigation.html.erb' %>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Puffit IM
+        <small>Followers</small>
+      </h1>
+      <br/>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Followers List</h3>
+            </div>
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tbody><tr>
+                  <th style="width: 10px">#</th>
+                  <th>Name</th>
+                  <th>Phone #</th>
+                  <th style="width: 40px">Actions</th>
+                </tr>
+
+                <% @followers["contacts"].each_with_index do |follower, index|%>
+                  <tr>
+                    <td><%= index %></td>
+                    <td><%= follower["name"] %></td>
+                    <td><%= follower["phone"] %></td>
+                    <td>
+                      <a href=""><i class="fa fa-envelope"></i></a>
+                    </td>
+                  </tr>
+                <% end %>
+
+              </tbody></table>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>    
+  </section>
+  </div>
+  <%= render 'shared/footer.html.erb' %>
+</div>
