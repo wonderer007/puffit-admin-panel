@@ -10,4 +10,8 @@ class HomeController < ApplicationController
     @followers = current_user.followers
   end
 
+  def profile
+    
+  end
+
 end

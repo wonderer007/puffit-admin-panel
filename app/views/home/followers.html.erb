@@ -19,18 +19,15 @@
     <thead>
         <tr>
             <th>Phone #</th>
-            <th>Message</th>
         </tr>
     </thead>
     <tfoot>
         <th>Phone #</th>
-        <th>Message</th>
     </tfoot>
     <tbody>
       <% @followers.each do |follower|%>
         <tr>
-          <td><%= follower%></td>
-          <td><%= follower%></td>
+          <td><a href=<%= profile_path(follower) %> ><%= follower%></a></td>
         </tr>
       <%end%>
     </tbody>
