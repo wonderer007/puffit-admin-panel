@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <%= render 'shared/header.html.erb' %>
+  <%= render 'shared/main_navigation.html.erb' %>
+  <div class="content-wrapper">
+
+    <section class="content-header">
+      <h1>
+        New Campaign
+      </h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box" style="padding:20px;">
+            <div class="box-header">
+            </div>
+            <br/>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-6 col-xs-offset-3">
+
+                <%= form_for(@campaign) do |f|%>
+
+                  <form role="form">
+                    <div class="box-body">
+                      <div class="form-group">
+                        <%= f.text_field :name, :class => "form-control", :id => "exampleInputEmail1", :placeholder => "Campaign Name", :required => true %>
+
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <%= render 'shared/footer.html.erb' %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable({});
+  });
+</script>

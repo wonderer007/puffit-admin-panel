@@ -1,0 +1,105 @@
+<div class="wrapper">
+  <%= render 'shared/header.html.erb' %>
+  <%= render 'shared/main_navigation.html.erb' %>
+  <div class="content-wrapper">
+
+    <section class="content-header">
+      <h1>
+        Campaigns
+      </h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box" style="padding:20px;">
+            <div class="box-header">
+              <h3 class="box-title"></h3>
+              <div class="box-tools">
+                <div class="input-group" style="width: 150px;">
+                  <% if Campaign.pending(current_user) %>
+                    <a class="btn btn-default" href="#" data-toggle="modal" data-target="#myModal">Create New Campaign</a>
+                  <% else %>
+                    <a class="btn btn-primary" href=<%= new_campaign_path %> >Create New Campaign</a>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="box-body table-responsive no-padding">
+              <table id="example" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Campaing ID</th>
+                    <th>Campaign Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                    <th>Delivery Report</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Campaing ID</th>
+                    <th>Campaign Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                    <th>Delivery Report</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <% @campaigns.each do |campaign|%>
+                  <tr>
+                    <td><%= campaign.id %></td>
+                    <td><%= campaign.name %></td>
+                    <td><%= campaign.created_at %></td>
+                    <td><%= campaign.end_time %></td>
+                    <td>
+                      <% if campaign.status %>
+                        <span class="label label-success">Completed</span>
+                      <% else %>
+                        <span class="label label-danger">Pending</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <a href="<%= campaign_delivery_report_index_path(campaign.id)%>"><i class="fa fa-file"></i></a>
+                    </td>
+                  </tr>
+                  <% end %>
+
+
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please Wait</h4>
+        </div>
+        <div class="modal-body">
+          <p>you have 1 pending campaign</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </section>
+  </div>
+  <%= render 'shared/footer.html.erb' %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable({"order": [[ 0, "desc" ]]});
+  });
+</script>
