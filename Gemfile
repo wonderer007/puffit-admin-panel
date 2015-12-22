@@ -22,10 +22,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'xmpp4r'
+gem 'xmpp4r', :path => "/home/office/Development/xmpp4r"
 gem "font-awesome-rails"
 gem "font-ionicons-rails"
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 gem 'devise'
 gem 'redis'
 gem 'figaro'
