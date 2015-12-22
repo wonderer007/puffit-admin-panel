@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222105810) do
+ActiveRecord::Schema.define(version: 20151222140815) do
 
   create_table "campaigns", force: :cascade do |t|
     t.datetime "created_at",                             null: false
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20151222105810) do
     t.string   "phone_number", limit: 255
     t.boolean  "status",                   default: false
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "messageable_id",   limit: 4
+    t.string   "messageable_type", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "messages", ["messageable_id"], name: "index_messages_on_messageable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

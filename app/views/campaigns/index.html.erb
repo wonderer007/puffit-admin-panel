@@ -17,11 +17,7 @@
               <h3 class="box-title"></h3>
               <div class="box-tools">
                 <div class="input-group" style="width: 150px;">
-                  <% if Campaign.pending(current_user) %>
-                    <a class="btn btn-default" href="#" data-toggle="modal" data-target="#myModal">Create New Campaign</a>
-                  <% else %>
-                    <a class="btn btn-primary" href=<%= new_campaign_path %> >Create New Campaign</a>
-                  <% end %>
+                  <a class="btn btn-primary" href=<%= new_campaign_path %> >Create New Campaign</a>
                 </div>
               </div>
             </div>
@@ -74,25 +70,6 @@
           </div>
         </div>
       </div>
-
-
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Please Wait</h4>
-        </div>
-        <div class="modal-body">
-          <p>you have 1 pending campaign</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
     </section>
   </div>
   <%= render 'shared/footer.html.erb' %>
