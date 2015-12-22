@@ -30,6 +30,8 @@ gem 'devise'
 gem 'redis'
 gem 'figaro'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'delayed_job_active_record'
+gem "daemons"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

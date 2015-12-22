@@ -17,8 +17,10 @@ class CampaignsController < ApplicationController
     campaign.user_id = current_user.id
     campaign.save
 
+    Delayed::Job.enqueue(CampaignJob.new(campaign.id))
     flash[:sucess] = "Campaign created sucessfully"
     redirect_to campaigns_path
+
   end
 
   private

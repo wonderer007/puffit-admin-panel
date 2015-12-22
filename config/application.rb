@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Pufit
   class Application < Rails::Application
     config.assets.paths << Rails.root.join("vendor","assets", "fonts")
+    config.autoload_paths << Rails.root.join('lib')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -23,5 +24,6 @@ module Pufit
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.active_job.queue_adapter = :delayed_job
   end
 end
