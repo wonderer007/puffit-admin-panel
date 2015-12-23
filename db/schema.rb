@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223095618) do
+ActiveRecord::Schema.define(version: 20151223135014) do
 
   create_table "campaigns", force: :cascade do |t|
     t.datetime "created_at",                               null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151223095618) do
     t.datetime "end_time"
     t.text     "msg",        limit: 65535
     t.integer  "count",      limit: 4
+    t.integer  "message_id", limit: 4
   end
 
   create_table "chats", force: :cascade do |t|
@@ -56,6 +57,12 @@ ActiveRecord::Schema.define(version: 20151223095618) do
     t.boolean  "status",                   default: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "url",        limit: 255
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer  "messageable_id",   limit: 4
     t.string   "messageable_type", limit: 255
@@ -69,6 +76,12 @@ ActiveRecord::Schema.define(version: 20151223095618) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.text     "msg",        limit: 65535
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

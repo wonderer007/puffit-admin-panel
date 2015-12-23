@@ -1,6 +1,7 @@
 class Campaign < ActiveRecord::Base
 
-  has_many :delivery_reports
+  has_many :delivery_reports  
+  belongs_to :message
   belongs_to :user
 
   def campaigns

@@ -19,20 +19,39 @@
             <div class="box-body table-responsive no-padding">
               <div class="col-md-6 col-xs-offset-3">
 
-                <%= form_for(@campaign) do |f|%>
+                <%= form_tag(campaigns_path, :method=>'post', :multipart => true) do %>
 
                   <form role="form">
                     <div class="box-body">
                       <div class="form-group">
-                        <%= f.text_field :name, :class => "form-control", :id => "exampleInputEmail1", :placeholder => "Campaign Name", :required => true %>
+                        <%= text_field_tag "campaign[name]", "", class: 'form-control', placeholder: "Campaign Name", required:true %>
                       </div>
                     </div>
 
                     <div class="box-body">
                       <div class="form-group">
-                        <%= f.text_area :msg, :class => "form-control", :placeholder => "Campaign Message", :required => true %>
+
+                       <%= select_tag("campaign[type]", 
+                            options_for_select([['Text ', '1'],
+                                     ['Image ', '2']]) {} , {prompt: "Select Campaign Type", :class => 'form-control', required:true }) %>
+
                       </div>
                     </div>
+
+                    <div class="box-body" id="campaign_text">
+                      <div class="form-group">
+
+                       <%= text_area_tag 'campaign[text]', nil, class: 'form-control',placeholder: "Campaign Text", required:true  %>
+                      </div>
+                    </div>
+
+
+                    <div class="box-body" id="campaign_image">
+                      <div class="form-group">
+                        <label for="file">Upload Image</label> <%= file_field_tag "campaign[avatar]", accept: "image/*", required:true %>
+                      </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
 
                 <% end %>
@@ -48,6 +67,26 @@
 
 <script>
   $(document).ready(function() {
+
     $('#example').DataTable({});
+    $("#campaign_text").css("display", "none");
+    $("#campaign_image").css("display", "none");
+
+    $( "#campaign_type" ).change(function() {
+      if($("#campaign_type").val() == 1) {
+        $("#campaign_text").css("display", "block");
+        $("#campaign_image").css("display", "none");
+      }
+      else if ($("#campaign_type").val() == 2) {
+        $("#campaign_image").css("display", "block");
+        $("#campaign_text").css("display", "none");
+      }
+      else {
+        $("#campaign_text").css("display", "none");
+        $("#campaign_image").css("display", "none");        
+      }
+
+    });
+
   });
 </script>
