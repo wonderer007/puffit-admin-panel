@@ -25,7 +25,12 @@
                     <div class="box-body">
                       <div class="form-group">
                         <%= f.text_field :name, :class => "form-control", :id => "exampleInputEmail1", :placeholder => "Campaign Name", :required => true %>
+                      </div>
+                    </div>
 
+                    <div class="box-body">
+                      <div class="form-group">
+                        <%= f.text_area :msg, :class => "form-control", :placeholder => "Campaign Message", :required => true %>
                       </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
