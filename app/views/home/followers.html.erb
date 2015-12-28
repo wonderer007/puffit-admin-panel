@@ -15,7 +15,7 @@
               <h3 class="box-title">Followers List</h3>
             </div>
             <div class="box-body">
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="followers" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Phone #</th>
@@ -43,6 +43,9 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable({});
+    $('#followers').DataTable({destroy: true});
   });
+
+
+
 </script>

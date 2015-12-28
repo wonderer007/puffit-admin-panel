@@ -23,7 +23,7 @@
             </div>
             <br/>
             <div class="box-body table-responsive no-padding">
-              <table id="example" class="table table-hover">
+              <table id="campaigns" class="table table-hover">
                 <thead>
                   <tr>
                     <th>Campaing ID</th>
@@ -77,6 +77,8 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable({"order": [[ 0, "desc" ]]});
+    $('#campaigns').DataTable({"order": [[ 0, "desc" ]], destroy: true });
   });
+  console.log("Hello World");
+
 </script>
