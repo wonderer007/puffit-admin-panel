@@ -5,9 +5,15 @@ class CampaignJob < Struct.new(:campaign_id)
   def perform
 
 
-    campaign = Campaign.find(campaign_id)
-    Delayed::Worker.logger.debug("start campaign for #{campaign.name}")
 
+    campaign = Campaign.find(campaign_id)
+
+    if campaign.message.messageable.class.name != "Text"
+      return
+    end
+
+    Delayed::Worker.logger.debug("start campaign for #{campaign.name}")
+    Delayed::Worker.logger.debug("username => #{ENV['XMPP_USER_NAME']}")
 
     jid = Jabber::JID.new('ruby@212.100.239.153/dailynews')
     @client = Jabber::Client.new(jid)

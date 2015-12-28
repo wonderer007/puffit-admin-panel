@@ -38,17 +38,17 @@
                       </div>
                     </div>
 
-                    <div class="box-body" id="campaign_text">
+                    <div class="box-body" id="text">
                       <div class="form-group">
 
-                       <%= text_area_tag 'campaign[text]', nil, class: 'form-control',placeholder: "Campaign Text", required:true  %>
+                       <%= text_area_tag 'campaign[text]', nil, class: 'form-control',placeholder: "Campaign Text"  %>
                       </div>
                     </div>
 
 
-                    <div class="box-body" id="campaign_image">
+                    <div class="box-body" id="image">
                       <div class="form-group">
-                        <label for="file">Upload Image</label> <%= file_field_tag "campaign[avatar]", accept: "image/*", required:true %>
+                        <label for="file">Upload Image</label> <%= file_field_tag "campaign[avatar]", accept: "image/*" %>
                       </div>
                     </div>
 
@@ -69,21 +69,33 @@
   $(document).ready(function() {
 
     $('#example').DataTable({});
-    $("#campaign_text").css("display", "none");
-    $("#campaign_image").css("display", "none");
+    $("#text").css("display", "none");
+    $("#image").css("display", "none");
 
     $( "#campaign_type" ).change(function() {
+
       if($("#campaign_type").val() == 1) {
-        $("#campaign_text").css("display", "block");
-        $("#campaign_image").css("display", "none");
+        $("#text").css("display", "block");
+        $("#image").css("display", "none");
+
+        $("#campaign_text").prop("required", "true");
+        $("#campaign_avatar").removeProp("required", "false");
+
       }
       else if ($("#campaign_type").val() == 2) {
-        $("#campaign_image").css("display", "block");
-        $("#campaign_text").css("display", "none");
+        $("#image").css("display", "block");
+        $("#text").css("display", "none");
+
+        $("#campaign_text").removeProp("required", "false");
+        $("#campaign_avatar").prop("required", "true");
       }
       else {
-        $("#campaign_text").css("display", "none");
-        $("#campaign_image").css("display", "none");        
+
+        $("#text").css("display", "none");
+        $("#image").css("display", "none");
+
+        $("#campaign_text").removeProp("required", "false");
+        $("#campaign_avatar").removeProp("required", "false");
       }
 
     });

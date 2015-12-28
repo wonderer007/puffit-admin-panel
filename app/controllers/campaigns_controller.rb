@@ -17,9 +17,9 @@ class CampaignsController < ApplicationController
       id  = text.id
       type = text.class.name
     else
-      image = Image.create(url: params[:campaign][:avatar])
+      image = Image.create(name: params[:campaign][:avatar])
       id  = image.id
-      type = image.class.name      
+      type = image.class.name
     end
 
     message   = Message.create(messageable_id: id, messageable_type: type)
