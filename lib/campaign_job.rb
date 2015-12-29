@@ -27,7 +27,7 @@ class CampaignJob < Struct.new(:campaign_id)
       to_jid = Jabber::JID.new("#{follower}@212.100.239.153")
       message = Jabber::Message::new(to_jid, campaign.message.messageable.msg).set_type(:chat).set_id(Random.rand(1..1000))
       @client.send(message)
-
+      campaign.delivery_reports.new(phone_number: follower, status: true)
       Delayed::Worker.logger.debug("Message sent to #{to_jid}")
 
     end
