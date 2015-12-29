@@ -5,7 +5,7 @@
 
     <section class="content-header">
       <h1>
-        Delivery Reports
+        Messages
       </h1>
     </section>
 
@@ -20,26 +20,20 @@
             </div>
             <br/>
             <div class="box-body table-responsive no-padding">
-              <table id="example" class="table table-hover">
+              <table id="messages" class="table table-hover">
                 <thead>
                   <tr>
-                    <th>Phone #</th>
-                    <th>Delivery Time</th>
-                    <th>Status</th>
+                    <th>Phone Number</th>
+                    <th>Last Message</th>
+                    <th>Recived Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @delivery_reports.each do |delivery_report|%>
+                  <% @responses.each do |response|%>
                   <tr>
-                    <td><%= delivery_report.phone_number %></td>
-                    <td><%= delivery_report.created_at %></td>
-                    <td>
-                      <% if delivery_report.status %>
-                        <span class="label label-success">Sent</span>
-                      <% else %>
-                        <span class="label label-danger">Pending</span>
-                      <% end %>
-                    </td>
+                    <td><%= response.phone_number %></td>
+                    <td><%= response.message %></td>
+                    <td><%= response.created_at.localtime.to_s %></td>
                   </tr>
                   <% end %>
 
@@ -49,7 +43,6 @@
           </div>
         </div>
       </div>
-
     </section>
   </div>
   <%= render 'shared/footer.html.erb' %>
@@ -57,6 +50,6 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
+    $('#messages').DataTable({"order": [[ 0, "desc" ]], destroy: true });
   });
 </script>

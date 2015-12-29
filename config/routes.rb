@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :delivery_report, :only => [:index]
   end
 
+  resources :responses
+
   get 'followers' => 'home#followers', :as => :followers
   get 'follower/profile/:id' => 'home#profile', :as => :profile
 

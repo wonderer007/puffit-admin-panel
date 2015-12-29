@@ -13,7 +13,7 @@ class CampaignsController < ApplicationController
   def create
 
     if params[:campaign][:type].to_i == 1
-      text = Text.create(msg: params[:campaign][:name])
+      text = Text.create(msg: params[:campaign][:text])
       id  = text.id
       type = text.class.name
     else
@@ -26,12 +26,17 @@ class CampaignsController < ApplicationController
     campaign  = Campaign.new campaign_params
     campaign.user_id = current_user.id
     campaign.message = message
+    campaign.end_time = Time.now()
     campaign.save
 
     Delayed::Job.enqueue(CampaignJob.new(campaign.id))
     flash[:sucess] = "Campaign created sucessfully"
     redirect_to campaigns_path
 
+  end
+
+  def show
+    @campaign = Campaign.find params[:id]
   end
 
   private

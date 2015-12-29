@@ -7,7 +7,14 @@
           <i class="fa fa-tachometer"></i> <span>Dashboad</span>
         </a>
       </li>
-
+      <li>
+        <a href="<%= responses_path %>">
+          <i class="fa fa-envelope"></i> <span>Messages</span>
+          <small class="label pull-right bg-red">
+            <%= current_user.unread_messages %>
+          </small>
+        </a>
+      </li>
       <li>
         <a href="<%= followers_path %>">
           <i class="fa fa-user"></i> <span>Followers</span>

@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
 
-  require 'net/http'
   before_action :authenticate_user!
   
   def index

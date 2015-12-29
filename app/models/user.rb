@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   has_many :campaigns
+  has_many :responses
 
   validates :username,
     :presence => true,
@@ -28,6 +29,22 @@ class User < ActiveRecord::Base
 
   def followers
     followers = REDIS.smembers("wonderer007:followers")
+  end
+
+  def unread_messages
+    self.responses.where(read:false).count
+  end
+
+  def messages_count
+    self.responses.count
+  end
+
+  def campaigns_count
+    self.campaigns.count
+  end
+
+  def followers_count
+    REDIS.smembers("#{self.username}:followers").count
   end
 
 end

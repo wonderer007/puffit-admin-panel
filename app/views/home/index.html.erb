@@ -7,10 +7,6 @@
       <h1>
         Dashboard
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -21,39 +17,39 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><%= current_user.followers_count %></h3>
               <p>Followers</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<%= followers_path %> class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53</h3>
+              <h3><%= current_user.messages_count %></h3>
               <p>Replys</p>
             </div>
             <div class="icon">
               <i class="ion ion-reply"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<%= responses_path %> class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><%= current_user.campaigns_count %></h3>
               <p>Campaigns</p>
             </div>
             <div class="icon">
               <i class="ion ion-chatbubble"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<%= campaigns_path %> class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
