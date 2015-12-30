@@ -22,6 +22,7 @@ class CampaignJob < Struct.new(:campaign_id)
 
 
     followers = User.last.followers
+
     followers.each do |follower|
 
       to_jid = Jabber::JID.new("#{follower}@212.100.239.153")
@@ -35,6 +36,7 @@ class CampaignJob < Struct.new(:campaign_id)
 
     Delayed::Worker.logger.debug("#{campaign.name} successfully completed")
     campaign.status = true
+    campaign.end_time = Time.now()
     campaign.save
   end
 

@@ -9,10 +9,7 @@
       </li>
       <li>
         <a href="<%= responses_path %>">
-          <i class="fa fa-envelope"></i> <span>Messages</span>
-          <small class="label pull-right bg-red">
-            <%= current_user.unread_messages %>
-          </small>
+          <i class="fa fa-envelope"></i> <span>Inbox</span>
         </a>
       </li>
       <li>
@@ -21,7 +18,14 @@
         </a>
       </li>
 
-      <li><a href="<%= campaigns_path  %>"><i class="fa fa-wechat"></i> <span>Campaigns</span></a></li>
+      <li>
+        <a href="<%= campaigns_path  %>">
+          <i class="fa fa-wechat"></i> <span>Campaigns</span>
+          <small class="label pull-right bg-red">
+            <%= current_user.pending_campaigns %>
+          </small>
+
+        </a></li>
     </ul>
   </section>
 </aside>

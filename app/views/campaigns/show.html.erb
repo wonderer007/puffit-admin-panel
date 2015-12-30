@@ -1,0 +1,88 @@
+<div class="wrapper">
+  <%= render 'shared/header.html.erb' %>
+  <%= render 'shared/main_navigation.html.erb' %>
+  <div class="content-wrapper">
+
+    <section class="content-header">
+      <h1>
+        Campaign Detail
+      </h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><%= @campaign.name %></h3>
+                </div>
+                <div class="box-body">
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th>Campaign ID</th>
+                        <td><%= @campaign.id %></td>
+                      </tr>
+
+                      <tr>
+                        <th>Campaign Type</th>
+                        <td><%= @campaign.message.messageable.class.name %></td>
+                      </tr>
+
+                      <% if @campaign.message.messageable.class.name == "Text" %>
+                        <tr>
+                          <th>Campaign Text</th>
+                          <td><%= @campaign.message.messageable.msg %></td>
+                        </tr>
+                      <% else %>
+                        <tr>
+                          <th>Campaign Image</th>
+                          <td>
+                            <img src=<%= @campaign.message.messageable.name.url(:thumb) %> >
+                          </td>
+                        </tr>
+
+                      <%end%>
+
+                      <tr>
+                        <th>Total Recipents</th>
+                        <td><%= @campaign.delivery_reports.count %></td>
+                      </tr>
+
+                      <tr>
+                        <th>Start Time</th>
+                        <td><%= @campaign.created_at.to_s %></td>
+                      </tr>
+
+                      <tr>
+                        <th>End Time</th>
+                        <td>
+                          <%=
+                            if @campaign.end_time.nil?
+                              "-"
+                            else
+                              @campaign.end_time.localtime.to_s 
+                            end
+                          %>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th>Status</th>
+                        <td >
+                          <% if @campaign.status %>
+                            <span class="label label-success">Completed</span>
+                          <% else %>
+                            <span class="label label-danger">Pending</span>
+                          <% end %>
+                        </td>
+                      </tr>
+                  </tbody></table>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+  </div>
+  <%= render 'shared/footer.html.erb' %>
+</div>

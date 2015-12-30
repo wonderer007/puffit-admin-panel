@@ -26,7 +26,7 @@ class CampaignsController < ApplicationController
     campaign  = Campaign.new campaign_params
     campaign.user_id = current_user.id
     campaign.message = message
-    campaign.end_time = Time.now()
+
     campaign.save
 
     Delayed::Job.enqueue(CampaignJob.new(campaign.id))
@@ -36,7 +36,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @campaign = Campaign.find params[:id]
+    @campaign = current_user.campaigns.find params[:id]
   end
 
   private

@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     self.campaigns.count
   end
 
+  def pending_campaigns
+    self.campaigns.where(status: false).count
+  end
+
   def followers_count
     REDIS.smembers("#{self.username}:followers").count
   end
