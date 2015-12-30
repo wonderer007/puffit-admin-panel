@@ -223,6 +223,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -314,6 +316,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
     xml-simple (1.1.5)
 
 PLATFORMS
@@ -336,6 +339,7 @@ DEPENDENCIES
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   mini_magick
   mysql2 (~> 0.3.18)
   pry
@@ -348,6 +352,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate
   xmpp4r!
 
 BUNDLED WITH

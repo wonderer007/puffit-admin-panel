@@ -3,7 +3,10 @@ class CampaignsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @campaigns = current_user.campaigns
+    respond_to do |format|
+      format.html
+      format.json { render json: ProductsDatatable.new(view_context) }
+    end
   end
 
   def new
