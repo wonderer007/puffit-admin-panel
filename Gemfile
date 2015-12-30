@@ -29,7 +29,7 @@ gem 'mysql2', '~> 0.3.18'
 gem 'devise'
 gem 'redis'
 gem 'figaro'
-gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'delayed_job_active_record'
 gem "daemons"
 gem 'carrierwave', '0.10.0'

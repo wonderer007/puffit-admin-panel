@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: ProductsDatatable.new(view_context) }
+      format.json { render json: CampaignsDatatable.new(view_context) }
     end
   end
 

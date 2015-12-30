@@ -20,11 +20,11 @@ class CampaignsDatatable
     def data
       campaigns.map do |campaign|
         [
+          campaign.id,
           link_to(campaign.name, campaign),
-          campaign.name,
           campaign.created_at.strftime("%e %b %Y %H:%M:%S%p"),
-          campaign.end_time.strftime("%e %b %Y %H:%M:%S%p"),
-          status
+          campaign.end_time,
+          campaign.status
         ]
       end
     end
