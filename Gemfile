@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'xmpp4r', :path => "/home/office/Development/xmpp4r"
 gem "font-awesome-rails"
-gem "font-ionicons-rails"
 gem 'mysql2', '~> 0.3.18'
 gem 'devise'
 gem 'redis'

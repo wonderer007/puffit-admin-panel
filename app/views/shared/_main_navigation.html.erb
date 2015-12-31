@@ -21,9 +21,11 @@
       <li>
         <a href="<%= campaigns_path  %>">
           <i class="fa fa-wechat"></i> <span>Campaigns</span>
-          <small class="label pull-right bg-red">
-            <%= current_user.pending_campaigns %>
-          </small>
+          <% if current_user.pending_campaigns > 0 %>
+            <small class="label pull-right bg-red">
+              <%= current_user.pending_campaigns %>
+            </small>
+          <% end %>
 
         </a></li>
     </ul>

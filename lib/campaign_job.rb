@@ -9,6 +9,9 @@ class CampaignJob < Struct.new(:campaign_id)
     campaign = Campaign.find(campaign_id)
 
     if campaign.message.messageable.class.name != "Text"
+      campaign.status = true
+      campaign.end_time = Time.now()
+      campaign.save
       return
     end
 
