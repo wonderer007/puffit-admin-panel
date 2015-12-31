@@ -4,7 +4,12 @@ class DeliveryReportController < ApplicationController
   before_action :set_campaign
 
   def index
-    @delivery_reports = @campaign.delivery_reports
+
+    respond_to do |format|
+      format.html
+      format.json { render json: DeliveryReportsDatatable.new(view_context, @campaign) }
+    end
+
   end
 
   private

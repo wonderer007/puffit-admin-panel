@@ -22,7 +22,7 @@
             </div>
             <br/>
             <div class="box-body table-responsive no-padding">
-              <table id="example" class="table table-hover">
+              <table id="example" class="table table-bordered table-hover" data-source="<%= campaign_delivery_report_index_path(@campaign,format: "json") %>">
                 <thead>
                   <tr>
                     <th>Phone #</th>
@@ -31,22 +31,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @delivery_reports.each do |delivery_report|%>
-                  <tr>
-                    <td><%= delivery_report.phone_number %></td>
-                    <td><%= delivery_report.created_at %></td>
-                    <td>
-                      <% if delivery_report.status %>
-                        <span class="label label-success">Sent</span>
-                      <% else %>
-                        <span class="label label-danger">Pending</span>
-                      <% end %>
-                    </td>
-                  </tr>
-                  <% end %>
-
-
-              </tbody></table>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -59,6 +45,19 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
+  $(function () {
+    var table = $('#example').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "sAjaxSource": $('#example').data('source'),
+      "sPaginationType": "full_numbers",
+      "bProcessing": true,
+      "bServerSide": true
+    });
+  });
   });
 </script>

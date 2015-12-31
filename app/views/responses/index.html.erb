@@ -20,25 +20,18 @@
             </div>
             <br/>
             <div class="box-body table-responsive no-padding">
-              <table id="messages" class="table table-hover">
+              <table id="messages" class="table table-bordered table-hover" data-source="<%= responses_path(format: "json") %>">
                 <thead>
                   <tr>
                     <th>Phone Number</th>
                     <th>Last Message</th>
                     <th>Recived Time</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @responses.each do |response|%>
-                  <tr>
-                    <td><%= response.phone_number %></td>
-                    <td><%= response.message %></td>
-                    <td><%= response.created_at.localtime.to_s %></td>
-                  </tr>
-                  <% end %>
-
-
-              </tbody></table>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -50,6 +43,21 @@
 
 <script>
   $(document).ready(function() {
-    $('#messages').DataTable({"order": [[ 0, "desc" ]], destroy: true });
+
+    $(function () {
+      var table = $('#messages').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "sAjaxSource": $('#messages').data('source'),
+        "sPaginationType": "full_numbers",
+        "bProcessing": true,
+        "bServerSide": true
+      });
+    });
+
   });
 </script>
