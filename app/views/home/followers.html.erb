@@ -2,30 +2,32 @@
   <%= render 'shared/header.html.erb' %>
   <%= render 'shared/main_navigation.html.erb' %>
   <div class="content-wrapper">
-  <section class="content-header">
-    <h1>
-      Followers
-    </h1>
-  </section>
-
+    <section class="content-header">
+      <h1>
+        Followers
+      </h1>
+    </section>
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header with-border">
+            <div class="box-header">
               <h3 class="box-title"></h3>
             </div>
             <div class="box-body">
-              <table id="followers" class="display" cellspacing="0" width="100%">
+              <table id="followers" class="table table-bordered table-hover" cellspacing="0" width="100%">
                   <thead>
                       <tr>
                           <th>Phone #</th>
+                          <th>Actions</th>
                       </tr>
                   </thead>
                   <tbody>
                     <% @followers.each do |follower|%>
                       <tr>
                         <td><a href=<%= profile_path(follower) %> ><%= follower%></a></td>
+                        <td>
+                          <a href=""><i class="fa fa-eye"></i></a></td>
                       </tr>
                     <%end%>
                   </tbody>
@@ -34,14 +36,29 @@
           </div>
         </div>
       </div>    
-  </section>
+    </section>
   </div>
   <%= render 'shared/footer.html.erb' %>
 </div>
 
 <script>
   $(document).ready(function() {
-    $('#followers').DataTable({destroy: true});
+
+    var table = $('#followers').DataTable({
+      "columnDefs": [{
+          "targets": [1],
+          "orderable": false
+      }],
+      "bDeferRender": true,
+      "language": {
+          "lengthMenu": "Display _MENU_ followers per page",
+          "zeroRecords": "No follower found - sorry",
+          "info": "Showing page _PAGE_ of _PAGES_",
+          "infoEmpty": "No followers available",
+          "infoFiltered": "(filtered from _MAX_ total followers)"
+      }
+
+    });
   });
 
 

@@ -2,20 +2,17 @@
   <%= render 'shared/header.html.erb' %>
   <%= render 'shared/main_navigation.html.erb' %>
   <div class="content-wrapper">
-
     <section class="content-header">
       <h1>
         Delivery Reports
       </h1>
     </section>
-
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box" style="padding:20px;">
             <div class="box-header">
               <h3 class="box-title">
-                <%= @campaign.name %>
               </h3>
               <div class="box-tools">
               </div>
@@ -37,27 +34,32 @@
           </div>
         </div>
       </div>
-
     </section>
   </div>
   <%= render 'shared/footer.html.erb' %>
 </div>
 
 <script>
-  $(document).ready(function() {
   $(function () {
     var table = $('#example').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
+      "order": [[ 1, "desc" ]],
+      "columnDefs": [{
+          "targets": [2],
+          "orderable": false
+      }],
       "sAjaxSource": $('#example').data('source'),
-      "sPaginationType": "full_numbers",
-      "bProcessing": true,
-      "bServerSide": true
+      "bProcessing": false,
+      "bServerSide": true,
+      "bDeferRender": true,
+      "bDeferRender": true,
+      "language": {
+          "lengthMenu": "Display _MENU_ reports per page",
+          "zeroRecords": "No report found - sorry",
+          "info": "Showing page _PAGE_ of _PAGES_",
+          "infoEmpty": "No reports available",
+          "infoFiltered": "(filtered from _MAX_ total reports)"
+      }
+
     });
-  });
   });
 </script>

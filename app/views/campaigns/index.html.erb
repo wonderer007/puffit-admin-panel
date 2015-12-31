@@ -2,61 +2,63 @@
   <%= render 'shared/header.html.erb' %>
   <%= render 'shared/main_navigation.html.erb' %>
   <div class="content-wrapper">
-
     <section class="content-header">
       <h1>
         Campaigns
       </h1>
     </section>
-    
-        <section class="content">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title pull-right">
-                    <a href=<%= new_campaign_path %> class="btn btn-block btn-primary">New Campaign</a>
-                  </h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example2" class="table table-bordered table-hover" data-source="<%= campaigns_path(format: "json") %>">
-                    <thead>
-                      <tr>
-                        <th>Campaign ID</th>
-                        <th>Campaign Name</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </section><!-- /.content -->
-
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title pull-right">
+                <a href=<%= new_campaign_path %> class="btn btn-block btn-primary">New Campaign</a>
+              </h3>
+            </div>
+            <div class="box-body">
+              <table id="campaigns" class="table table-bordered table-hover" data-source="<%= campaigns_path(format: "json") %>">
+                <thead>
+                  <tr>
+                    <th>Campaign ID</th>
+                    <th>Campaign Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
   <%= render 'shared/footer.html.erb' %>
 </div>
 
 <script>
   $(function () {
-    var table = $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "sAjaxSource": $('#example2').data('source'),
-      "sPaginationType": "full_numbers",
-      "bProcessing": true,
-      "bServerSide": true
+    var table = $('#campaigns').DataTable({
+      "order": [[ 0, "desc" ]],
+      "columnDefs": [{
+          "targets": [4,5],
+          "orderable": false
+      }],
+      "sAjaxSource": $('#campaigns').data('source'),
+      "bProcessing": false,
+      "bServerSide": true,
+      "bDeferRender": true,
+      "language": {
+          "lengthMenu": "Display _MENU_ campaigns per page",
+          "zeroRecords": "No campaign found - sorry",
+          "info": "Showing page _PAGE_ of _PAGES_",
+          "infoEmpty": "No campaigns available",
+          "infoFiltered": "(filtered from _MAX_ total campaigns)"
+      }
     });
   });
 </script>

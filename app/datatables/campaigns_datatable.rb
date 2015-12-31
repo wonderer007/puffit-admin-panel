@@ -66,7 +66,8 @@ class CampaignsDatatable
     end
 
     def sort_direction
-      params[:sSortDir_0] = "desc"
+      params[:sSortDir_0] == "desc" ? "desc" : "asc"
+
     end
 
 end

@@ -46,16 +46,21 @@
 
     $(function () {
       var table = $('#messages').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
+        "columnDefs": [{
+            "targets": [3],
+            "orderable": false
+        }],
         "sAjaxSource": $('#messages').data('source'),
-        "sPaginationType": "full_numbers",
-        "bProcessing": true,
-        "bServerSide": true
+        "bProcessing": false,
+        "bServerSide": true,
+        "bDeferRender": true,
+        "language": {
+            "lengthMenu": "Display _MENU_ replies per page",
+            "zeroRecords": "No reply found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No replies available",
+            "infoFiltered": "(filtered from _MAX_ total replies)"
+        }
       });
     });
 

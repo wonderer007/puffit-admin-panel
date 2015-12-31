@@ -57,12 +57,12 @@ class DeliveryReportsDatatable
     end
 
     def sort_column
-      columns = %w[id name created_at end_time status status]
+      columns = %w[phone_number created_at status]
       columns[params[:iSortCol_0].to_i]
     end
 
     def sort_direction
-      params[:sSortDir_0] = "desc"
+      params[:sSortDir_0] == "desc" ? "desc" : "asc"
     end
 
 end
