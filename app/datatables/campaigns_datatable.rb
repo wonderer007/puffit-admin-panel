@@ -26,12 +26,13 @@ class CampaignsDatatable
           status = "<span class='label label-danger'>Pending</span>"
         end
 
+        end_time = campaign.end_time.nil? ? '-' : campaign.end_time.strftime("%e %b %Y %H:%M:%S%p").to_s
 
         [
           campaign.id,
           campaign.name,
           campaign.created_at.strftime("%e %b %Y %H:%M:%S%p").to_s,
-          campaign.end_time.strftime("%e %b %Y %H:%M:%S%p").to_s,
+          end_time,
           status,
           "<a href='/campaigns/#{campaign.id}'><i class='fa fa-eye'></i></a>  <a href='/campaigns/#{campaign.id}/delivery_report'><i class='fa fa-file'></i></a>".html_safe
 

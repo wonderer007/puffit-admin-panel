@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'xmpp4r', :path => "/home/office/Development/xmpp4r"
+gem 'xmpp4r'
 gem 'font-awesome-rails'
 gem 'mysql2', '~> 0.3.18'
 gem 'devise'
@@ -38,6 +38,9 @@ gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 gem 'will_paginate'
 gem 'sweet-alert'
+gem 'faker'
+gem 'puma'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,7 +61,11 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem "better_errors"
   gem 'pry'
-  gem 'faker'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
