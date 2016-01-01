@@ -10,7 +10,6 @@ class HomeController < ApplicationController
   end
 
   def profile
-    
   end
 
 end

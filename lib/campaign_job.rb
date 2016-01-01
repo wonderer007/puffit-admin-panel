@@ -4,8 +4,6 @@ class CampaignJob < Struct.new(:campaign_id)
 
   def perform
 
-
-
     campaign = Campaign.find(campaign_id)
 
     if campaign.message.messageable.class.name != "Text"
@@ -35,7 +33,6 @@ class CampaignJob < Struct.new(:campaign_id)
       Delayed::Worker.logger.debug("Message sent to #{to_jid}")
 
     end
-
 
     Delayed::Worker.logger.debug("#{campaign.name} successfully completed")
     campaign.status = true

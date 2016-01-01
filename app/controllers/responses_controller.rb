@@ -11,6 +11,7 @@ class ResponsesController < ApplicationController
   end
 
   def show
+    @responses = Response.order(id: :desc).where(:phone_number => @response.phone_number).limit(10)
   end
 
   private

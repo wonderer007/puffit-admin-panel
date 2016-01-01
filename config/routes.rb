@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   get 'followers' => 'home#followers', :as => :followers
   get 'follower/profile/:id' => 'home#profile', :as => :profile
+  get 'status' => 'home#status', :as => :status
 
 end

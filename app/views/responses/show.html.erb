@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <%= render 'shared/header.html.erb' %>
+  <%= render 'shared/main_navigation.html.erb' %>
+  <div class="content-wrapper">
+
+    <section class="content-header">
+      <h1>
+        Message Details
+      </h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary direct-chat direct-chat-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">From <%= @response.phone_number %></h3>
+                </div>
+                <div class="box-body">
+
+                  <div class="direct-chat-messages">
+                    <% @responses.each do |response|%>
+                      <div class="direct-chat-msg">
+                        <div class="direct-chat-info clearfix">
+                          <span class="direct-chat-timestamp pull-right">
+                            <%= response.created_at.localtime.to_s %>
+                          </span>
+                        </div>
+                        <div class="direct-chat-text">
+                          <%= response.message %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <form action="#" method="post">
+                    <div class="input-group">
+                      <input type="text" name="message" placeholder="Type Reply ..." class="form-control">
+                      <span class="input-group-btn">
+                        <button type="button" id="reply" class="btn btn-primary btn-flat">Send</button>
+                      </span>
+                    </div>
+                  </form>
+                </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </div>
+  <%= render 'shared/footer.html.erb' %>
+</div>
+<script>
+  $(function() {
+    $(document).on('click', '#reply', function() { 
+      swal({
+  title: "Please Wait !!!",   text: "",   timer: 2000,   showConfirmButton: false        });
+     });
+  });
+</script>
